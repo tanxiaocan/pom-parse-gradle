@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="placeholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="configBean"/>
+    </bean>
+
+    <bean id="configBean" class="com.txc.conf.ConfigBean">
+        <property name="configurations">
+            <list>
+            <!-- 测试环境配置文件 -->
+            <bean class="org.apache.commons.configuration.XMLConfiguration">
+                <constructor-arg index="0" type="java.net.URL"
+                                 value="classpath:conf/pom-root.xml"/>
+            </bean>
+            </list>
+        </property>
+
+    </bean>
+</beans>
