@@ -6,11 +6,8 @@ apply plugin: 'java'
 sourceCompatibility = 1.7
 
 repositories {
-    maven {
-        url "http://nexus.inner.focus.cn/nexus/content/groups/public/"
-    }
-    mavenLocal()
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {

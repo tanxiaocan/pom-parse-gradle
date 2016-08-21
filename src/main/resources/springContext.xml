@@ -2,7 +2,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-
     <bean name="placeholderConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="properties" ref="configBean"/>
@@ -19,5 +18,13 @@
             </list>
         </property>
 
+    </bean>
+
+    <bean id="configBeanSupport" class="com.txc.conf.ConfigBeanSupport">
+        <property name="configBean" ref="configBean"/>
+    </bean>
+
+    <bean id="gradleGenerator" class="com.txc.util.GradleGenerator">
+        <property name="cacheMap" ref="configBeanSupport"/>
     </bean>
 </beans>
